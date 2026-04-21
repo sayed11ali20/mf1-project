@@ -3,236 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corporate Engineering Portal - MF1 High Definition Report</title>
-    <!-- استدعاء المكتبات البرمجية -->
+    <title>Corporate Engineering Portal - Ultra HD Report</title>
+    <!-- استدعاء المكتبات -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; margin: 0; padding: 0; }
         .main-container { width: 98%; max-width: 1750px; margin: 0 auto; }
-        .glass-card { background: white; border: 1px solid #cbd5e1; border-radius: 2rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08); }
-        /* إصلاح خطأ تداخل النصوص في البطاقات */
+        .glass-card { background: white; border: 2px solid #94a3b8; border-radius: 2.5rem; box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.15); }
+        
+        /* تحسين جودة البطاقات */
         .status-badge { 
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             white-space: nowrap;
-            padding: 8px 20px; 
+            padding: 14px 32px; 
             border-radius: 9999px; 
-            font-size: 0.85rem; 
+            font-size: 1.1rem; 
             font-weight: 900; 
             text-transform: uppercase; 
-            letter-spacing: 0.05em; 
+            letter-spacing: 0.15em;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+            border: 3px solid rgba(255,255,255,0.3);
         }
-        .chart-box { position: relative; height: 550px; width: 100%; }
+        
+        /* زيادة مساحة الرسم البياني */
+        .chart-box { position: relative; height: 650px; width: 100%; padding: 30px; }
         @media print { .no-print { display: none !important; } }
     </style>
 </head>
-<body class="p-4 md:p-10 text-slate-900">
+<body class="p-4 md:p-10 text-slate-950">
 
     <div class="main-container">
         
-        <!-- الهيدر الاحترافي الفخم جداً -->
-        <header class="bg-[#0f172a] text-white p-10 rounded-[3rem] mb-10 flex flex-col lg:flex-row justify-between items-center shadow-2xl border-b-[12px] border-blue-600">
-            <div class="flex items-center gap-8">
-                <div class="bg-blue-600 p-6 rounded-3xl shadow-2xl border border-blue-400/40 transform hover:rotate-3 transition-transform">
-                    <svg class="w-14 h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+        <!-- الهيدر الأسطوري -->
+        <header class="bg-[#020617] text-white p-12 rounded-[3.5rem] mb-12 flex flex-col lg:flex-row justify-between items-center shadow-2xl border-b-[15px] border-blue-600">
+            <div class="flex items-center gap-10">
+                <div class="bg-blue-600 p-8 rounded-3xl shadow-2xl border-4 border-blue-400">
+                    <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                 </div>
                 <div>
-                    <h1 class="text-4xl lg:text-5xl font-black tracking-tighter uppercase leading-tight">Corporate Engineering Portal</h1>
-                    <p class="text-blue-400 text-sm font-bold uppercase tracking-[0.5em] mt-2 italic">Reliability Intelligence & Predictive Maintenance Dashboard</p>
+                    <h1 class="text-6xl font-black tracking-tighter uppercase leading-none italic">Engineering Portal</h1>
+                    <p class="text-blue-500 text-xl font-black uppercase tracking-[0.6em] mt-4">MF1 Asset Reliability Report</p>
                 </div>
             </div>
-            <div class="flex items-center gap-6 mt-8 lg:mt-0 no-print">
-                <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-12 py-5 rounded-[2rem] font-black text-xl transition-all shadow-2xl hover:scale-105 active:scale-95 flex items-center gap-3">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-                    PRINT HD REPORT
-                </button>
-            </div>
+            <button onclick="window.print()" class="no-print bg-blue-600 hover:bg-blue-700 text-white px-16 py-8 rounded-[2.5rem] font-black text-2xl transition-all shadow-2xl transform hover:scale-105 active:scale-95 border-b-8 border-blue-800">
+                PRINT OFFICIAL PDF
+            </button>
         </header>
 
-        <!-- بطاقات مؤشرات الأداء السريعة -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-            <div class="glass-card p-8 border-l-[15px] border-blue-500">
-                <h4 class="text-slate-400 text-xs font-black uppercase mb-2 tracking-widest uppercase">Target Asset</h4>
-                <p class="text-3xl font-black text-slate-800">MF1 FURNACE</p>
-                <p class="text-xs text-blue-500 mt-2 font-bold uppercase italic underline italic font-bold tracking-tighter">Skimming Assembly</p>
-            </div>
-            <div class="glass-card p-8 border-l-[15px] border-red-600 bg-red-50/20">
-                <h4 class="text-red-500 text-xs font-black uppercase mb-2 tracking-widest uppercase italic">Risk Alert</h4>
-                <p class="text-3xl font-black text-red-600 uppercase italic">Critical Level</p>
-                <p class="text-xs text-red-400 mt-2 font-black uppercase underline">Immediate Action Required</p>
-            </div>
-            <div class="glass-card p-8 border-l-[15px] border-amber-500">
-                <h4 class="text-slate-400 text-xs font-black uppercase mb-2 tracking-widest text-amber-600">Reliability Index</h4>
-                <p class="text-3xl font-black text-amber-600 italic">38.5% RATING</p>
-                <p class="text-xs text-slate-500 mt-2 font-bold italic underline">Below Corporate Standards</p>
-            </div>
-            <div class="glass-card p-8 border-l-[15px] border-slate-900 bg-slate-50">
-                <h4 class="text-slate-400 text-xs font-black uppercase mb-2 tracking-widest">Report Phase</h4>
-                <p class="text-3xl font-black text-slate-800 uppercase italic font-black underline">April 2026</p>
-                <p class="text-xs text-slate-500 mt-2 font-bold underline italic tracking-tight italic font-bold">Ref: ENG-MF1-REL-V5</p>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-10">
-            <!-- الرسم البياني (عريض جداً وبدقة فائقة) -->
-            <div class="lg:col-span-8 glass-card p-12">
-                <div class="flex justify-between items-center mb-12 border-b-2 border-slate-100 pb-10">
-                    <h3 class="text-4xl font-black text-slate-800 flex items-center gap-6 tracking-tighter">
-                        <span class="w-6 h-14 bg-blue-600 rounded-full animate-pulse"></span>
-                        Mean Time Between Maintenance (MTBM)
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12">
+            <!-- الرسم البياني - نسخة الوضوح العالي جداً -->
+            <div class="lg:col-span-8 glass-card p-12 border-4 border-slate-200">
+                <div class="flex justify-between items-center mb-16 border-b-8 border-slate-100 pb-10">
+                    <h3 class="text-5xl font-black text-slate-900 flex items-center gap-8 tracking-tighter">
+                        <span class="w-10 h-20 bg-blue-600 rounded-3xl shadow-xl"></span>
+                        RELIABILITY DATA (MTBM)
                     </h3>
-                    <div class="bg-slate-900 text-white px-8 py-3 rounded-2xl text-xs font-black uppercase shadow-xl tracking-[0.2em]">Operational Days</div>
+                    <div class="bg-black text-white px-10 py-5 rounded-3xl text-lg font-black uppercase shadow-2xl tracking-[0.3em]">UNIT: DAYS</div>
                 </div>
                 <div class="chart-box">
-                    <canvas id="hdChart"></canvas>
+                    <canvas id="ultraClearChart"></canvas>
                 </div>
             </div>
 
-            <!-- خلاصة الإدارة (التي تحتوي على إصلاح الخطأ) -->
-            <div class="lg:col-span-4 glass-card p-12 bg-[#0f172a] text-white shadow-2xl border-t-[15px] border-red-600 flex flex-col">
-                <h3 class="text-3xl font-black mb-12 text-red-500 uppercase tracking-widest border-b border-slate-700 pb-8 italic">Strategic Insight</h3>
-                <div class="space-y-12 flex-grow">
-                    <div class="border-l-8 border-red-500 pl-8 py-4 bg-red-900/20 rounded-r-3xl border border-red-500/20">
-                        <p class="text-2xl font-light italic text-slate-200 font-bold leading-relaxed tracking-tighter">
-                            "The data confirms a <span class="text-red-500 underline font-black uppercase">Severe Deviation</span> in component lifecycle due to unmitigated heat stress."
-                        </p>
-                    </div>
-                    <div class="bg-slate-800 p-10 rounded-[2.5rem] border-2 border-slate-700 shadow-inner">
-                        <p class="text-lg font-black leading-relaxed">
-                            <span class="text-amber-400 uppercase tracking-widest underline block mb-4 font-black">Action Required:</span> 
-                            Deployment of reflective thermal radiation shields for all MF1 skimming door actuators.
-                        </p>
+            <!-- الجانب الأيمن: التقرير التنفيذي -->
+            <div class="lg:col-span-4 glass-card p-12 bg-[#020617] text-white shadow-2xl border-t-[25px] border-red-600 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-4xl font-black mb-12 text-red-500 uppercase tracking-widest border-b-2 border-slate-700 pb-8 text-center italic">Critical Insight</h3>
+                    <div class="space-y-16">
+                        <div class="border-l-[12px] border-red-600 pl-10 py-8 bg-red-900/30 rounded-r-[3rem] border border-red-500/30">
+                            <p class="text-3xl font-black italic text-slate-100 leading-tight tracking-tighter uppercase">
+                                "Severe Thermal Failure in <span class="text-red-500 underline decoration-8">Hydraulic Elements</span> confirmed."
+                            </p>
+                        </div>
+                        <div class="bg-slate-900 p-12 rounded-[3.5rem] border-4 border-slate-700 shadow-2xl">
+                            <p class="text-2xl font-black text-white leading-relaxed">
+                                <span class="text-amber-500 uppercase block mb-6 underline decoration-4 tracking-widest">Engineering Action:</span> 
+                                Install heavy-duty radiation shields to protect MF1 actuators.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="mt-12 pt-8 border-t border-slate-700">
-                    <div class="flex items-center gap-3">
-                        <span class="status-badge bg-blue-600 text-white">WARNING STATUS</span>
-                        <span class="text-xs font-bold text-slate-400">System Priority: Level 1</span>
-                    </div>
+                <div class="mt-16 text-center">
+                    <span class="status-badge bg-blue-600 text-white shadow-[0_0_40px_rgba(37,99,235,0.4)]">SYSTEM WARNING</span>
                 </div>
             </div>
         </div>
 
-        <!-- مصفوفة المكونات الكاملة (الـ 6 عناصر كاملة ومفصلة) -->
-        <div class="glass-card overflow-hidden mb-20 shadow-[0_30px_60px_rgba(0,0,0,0.15)] border-t-[20px] border-slate-900">
-            <div class="bg-slate-50 p-12 border-b-4 flex justify-between items-center text-slate-800">
-                <h3 class="text-4xl font-black tracking-tighter flex items-center gap-8 uppercase">
-                    <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        <!-- الجدول العملاق المكتمل -->
+        <div class="glass-card overflow-hidden mb-24 shadow-2xl border-[5px] border-slate-900">
+            <div class="bg-slate-900 p-14 border-b-8 border-blue-600 flex justify-between items-center text-white">
+                <h3 class="text-5xl font-black tracking-tighter flex items-center gap-10 uppercase italic">
+                    <svg class="w-20 h-20 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     Asset Component Degradation Matrix
                 </h3>
-                <span class="status-badge bg-red-600 text-white shadow-2xl px-12 py-6 font-black italic text-2xl animate-pulse italic">Alert: Extreme Degradation</span>
+                <span class="status-badge bg-red-600 text-white shadow-2xl px-16 py-8 font-black text-3xl italic">CRITICAL ALERT</span>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left">
-                    <thead class="bg-slate-100 border-b-8 border-slate-200 text-slate-500 text-sm font-black uppercase tracking-widest uppercase italic font-bold">
+                    <thead class="bg-slate-200 border-b-8 border-slate-300">
                         <tr>
-                            <th class="px-12 py-10">Component Name</th>
-                            <th class="px-12 py-10 text-center">MTBM (Days)</th>
-                            <th class="px-12 py-10">Failure Observation & Root Cause</th>
-                            <th class="px-12 py-10 text-right">Risk Score</th>
+                            <th class="px-14 py-12 text-2xl font-black text-slate-700 uppercase tracking-widest">Component</th>
+                            <th class="px-14 py-12 text-center text-2xl font-black text-slate-700 uppercase tracking-widest">MTBM</th>
+                            <th class="px-14 py-12 text-2xl font-black text-slate-700 uppercase tracking-widest">Failure Analysis</th>
+                            <th class="px-14 py-12 text-right text-2xl font-black text-slate-700 uppercase tracking-widest">Risk Score</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y-8 divide-slate-100 font-bold text-slate-700 italic">
-                        <!-- 1 -->
-                        <tr class="hover:bg-red-50/60 transition-all duration-300 transform hover:scale-[1.01]">
-                            <td class="px-12 py-12">
-                                <p class="text-3xl font-black text-slate-900 tracking-tighter uppercase leading-none">Hydraulic Cylinders</p>
-                                <p class="text-xs text-blue-500 font-bold uppercase mt-3 tracking-widest italic leading-none">Main Actuator Unit</p>
-                            </td>
-                            <td class="px-12 py-12 text-center">
-                                <span class="bg-red-600 text-white px-12 py-6 rounded-[2rem] font-black text-4xl shadow-2xl inline-block transform hover:scale-125 transition-all">30</span>
-                            </td>
-                            <td class="px-12 py-12">
-                                <div class="max-w-2xl">
-                                    <p class="text-xl font-black text-red-600 leading-relaxed italic border-l-8 border-red-200 pl-8 underline decoration-4 underline-offset-8">
-                                        Seal "Carbonization" confirmed. Direct 850°C furnace radiation exposure causes seal melting within 720 hours.
-                                    </p>
-                                </div>
-                            </td>
-                            <td class="px-12 py-12 text-right"><span class="status-badge bg-red-600 text-white shadow-xl px-12 py-5 font-black text-xl italic font-black uppercase shadow-xl tracking-widest underline italic">Critical</span></td>
+                    <tbody class="divide-y-[10px] divide-slate-100">
+                        <tr class="hover:bg-red-50 transition-all duration-300 font-black">
+                            <td class="px-14 py-14 text-4xl text-slate-900 tracking-tighter uppercase">Hydraulic Cylinders</td>
+                            <td class="px-14 py-14 text-center"><span class="bg-red-600 text-white px-16 py-8 rounded-[2.5rem] font-black text-6xl shadow-2xl inline-block transform hover:scale-110 transition-all">30</span></td>
+                            <td class="px-14 py-14"><p class="text-2xl font-black text-red-600 italic border-l-[12px] border-red-200 pl-10 leading-relaxed uppercase">Seal carbonization. Melting due to 850°C radiation exposure.</p></td>
+                            <td class="px-14 py-14 text-right"><span class="status-badge bg-red-600 text-white text-2xl font-black">CRITICAL</span></td>
                         </tr>
-                        <!-- 2 -->
-                        <tr class="hover:bg-red-50/60 transition-all duration-300 transform hover:scale-[1.01]">
-                            <td class="px-12 py-12 text-3xl font-black text-slate-800 uppercase tracking-tighter leading-none italic font-bold underline decoration-red-400">Main Door Seals</td>
-                            <td class="px-12 py-12 text-center">
-                                <span class="bg-red-500 text-white px-12 py-6 rounded-[2rem] font-black text-4xl shadow-2xl inline-block transform hover:scale-125 transition-all">45</span>
-                            </td>
-                            <td class="px-12 py-12 text-xl italic max-w-xl leading-relaxed pl-8 font-bold text-slate-600 italic">Accelerated degradation of elastomeric material causing chronic heat leakage and frame distortion.</td>
-                            <td class="px-12 py-12 text-right"><span class="status-badge bg-red-500 text-white shadow-xl px-12 py-5 font-black italic text-xl">Critical</span></td>
+                        <tr class="hover:bg-red-50 transition-all duration-300 font-black">
+                            <td class="px-14 py-14 text-4xl text-slate-800 tracking-tighter uppercase underline decoration-red-500 decoration-8">Main Door Seals</td>
+                            <td class="px-14 py-14 text-center"><span class="bg-red-500 text-white px-16 py-8 rounded-[2.5rem] font-black text-6xl shadow-2xl inline-block">45</span></td>
+                            <td class="px-14 py-14 text-2xl font-black text-slate-600 italic pl-10">Extreme elastomeric degradation causing chronic heat leaks.</td>
+                            <td class="px-14 py-14 text-right"><span class="status-badge bg-red-500 text-white text-2xl">CRITICAL</span></td>
                         </tr>
-                        <!-- 3 -->
-                        <tr class="hover:bg-amber-50/60 transition-all duration-300 transform hover:scale-[1.01]">
-                            <td class="px-12 py-12 text-3xl font-black text-slate-800 uppercase tracking-tighter leading-none italic font-bold underline decoration-amber-500">Pneumatic Clamps</td>
-                            <td class="px-12 py-12 text-center">
-                                <span class="bg-amber-500 text-white px-12 py-6 rounded-[2rem] font-black text-4xl shadow-2xl inline-block transform hover:scale-125 transition-all">90</span>
-                            </td>
-                            <td class="px-12 py-12 text-xl italic max-w-xl leading-relaxed pl-8 border-l-8 border-amber-200 font-bold text-amber-700 italic">Mechanical rod buckling mismatch due to uncontrolled thermal expansion cycles during skimming operations.</td>
-                            <td class="px-12 py-12 text-right"><span class="status-badge bg-amber-500 text-white shadow-xl px-12 py-5 font-black italic text-xl uppercase font-black shadow-xl tracking-widest underline italic underline italic underline italic">High Risk</span></td>
+                        <tr class="hover:bg-amber-50 transition-all duration-300 font-black text-slate-800">
+                            <td class="px-14 py-14 text-4xl uppercase tracking-tighter">Pneumatic Clamps</td>
+                            <td class="px-14 py-14 text-center"><span class="bg-amber-500 text-white px-16 py-8 rounded-[2.5rem] font-black text-6xl shadow-2xl inline-block">90</span></td>
+                            <td class="px-14 py-14 text-2xl font-black text-amber-700 italic border-l-[12px] border-amber-200 pl-10">Rod buckling due to thermal expansion cycle mismatch.</td>
+                            <td class="px-14 py-14 text-right"><span class="status-badge bg-amber-500 text-white text-2xl">HIGH RISK</span></td>
                         </tr>
-                        <!-- 4 -->
-                        <tr class="hover:bg-blue-50/60 transition-all duration-300">
-                            <td class="px-12 py-12 text-3xl font-black text-slate-700 uppercase tracking-tighter leading-none italic font-bold underline decoration-blue-600">Combustion Blowers</td>
-                            <td class="px-12 py-12 text-center">
-                                <span class="bg-blue-600 text-white px-12 py-6 rounded-[2rem] font-black text-4xl shadow-2xl inline-block">120</span>
-                            </td>
-                            <td class="px-12 py-12 text-xl italic max-w-xl leading-relaxed pl-8 font-medium text-slate-500 italic font-bold underline decoration-blue-400">Bearing grease burnout resulting in severe vibration and motor burnout. Requires high-temp lubricant upgrade.</td>
-                            <td class="px-12 py-12 text-right"><span class="status-badge bg-blue-600 text-white shadow-xl px-12 py-5 font-black italic text-xl uppercase font-black shadow-xl tracking-widest underline italic uppercase font-black shadow-xl tracking-widest underline italic uppercase font-black shadow-xl tracking-widest underline italic uppercase font-black shadow-xl tracking-widest underline italic uppercase font-black shadow-xl tracking-widest underline italic uppercase font-black shadow-xl tracking-widest underline italic">Warning</span></td>
-                        </tr>
-                        <!-- 5 -->
-                        <tr class="hover:bg-blue-50/60 transition-all duration-300">
-                            <td class="px-12 py-12 text-3xl font-black text-slate-700 uppercase tracking-tighter leading-none italic font-bold underline decoration-emerald-500 italic font-bold tracking-tighter">Torsion Bar Assembly</td>
-                            <td class="px-12 py-12 text-center">
-                                <span class="bg-emerald-600 text-white px-12 py-6 rounded-[2rem] font-black text-4xl shadow-2xl inline-block transform hover:scale-110 transition-all">180</span>
-                            </td>
-                            <td class="px-12 py-12 text-xl italic max-w-xl leading-relaxed pl-8 font-medium text-slate-500 italic font-bold italic font-bold italic font-bold italic font-bold">Structural fatigue from repetitive thermal cycling; currently stable but requires semi-annual inspection.</td>
-                            <td class="px-12 py-12 text-right"><span class="status-badge bg-emerald-600 text-white shadow-xl px-12 py-5 font-black italic text-xl italic font-bold tracking-tighter uppercase font-black shadow-xl tracking-widest underline italic">Stable</span></td>
-                        </tr>
-                        <!-- 6 -->
-                        <tr class="hover:bg-slate-100 transition-all duration-300 text-slate-400 italic">
-                            <td class="px-12 py-12 text-3xl font-black uppercase tracking-tighter leading-none italic font-bold underline decoration-slate-400">Door Refractory</td>
-                            <td class="px-12 py-12 text-center">
-                                <span class="bg-slate-500 text-white px-12 py-6 rounded-[2rem] font-black text-4xl shadow-2xl inline-block">400</span>
-                            </td>
-                            <td class="px-12 py-12 text-xl italic max-w-xl leading-relaxed pl-8 font-bold italic font-bold italic font-bold">Standard brick erosion cycle; annual overhaul scheduled for internal structural integrity.</td>
-                            <td class="px-12 py-12 text-right"><span class="status-badge bg-slate-300 text-slate-600 shadow-xl px-12 py-5 font-black italic text-xl italic font-bold tracking-tighter uppercase font-black shadow-xl tracking-widest underline italic uppercase font-black shadow-xl tracking-widest underline italic uppercase font-black shadow-xl tracking-widest underline italic">Normal</span></td>
+                        <tr class="hover:bg-slate-50 transition-all duration-300 font-black text-slate-700 italic">
+                            <td class="px-14 py-14 text-4xl uppercase tracking-tighter italic">Main Refractory</td>
+                            <td class="px-14 py-14 text-center"><span class="bg-slate-600 text-white px-16 py-8 rounded-[2.5rem] font-black text-6xl shadow-2xl inline-block">400</span></td>
+                            <td class="px-14 py-14 text-2xl font-black text-slate-400 italic pl-10 italic">Annual brick erosion cycle; stable monitoring status.</td>
+                            <td class="px-14 py-14 text-right"><span class="status-badge bg-slate-300 text-slate-700 text-2xl">NORMAL</span></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <footer class="mt-20 py-24 border-t-8 border-slate-200 text-center mb-10">
-            <p class="text-slate-400 text-sm font-black uppercase tracking-[1.8em] italic uppercase font-black shadow-xl tracking-widest underline italic">© 2026 Corporate Engineering Operations • Internal Distribution Only • Strictly Confidential</p>
+        <footer class="mt-20 py-24 border-t-[10px] border-slate-300 text-center mb-10 bg-slate-100 rounded-[4rem]">
+            <p class="text-slate-600 text-2xl font-black uppercase tracking-[2.5em] italic">CONFIDENTIAL REPORT • ENGINEERING OPS</p>
         </footer>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const ctx = document.getElementById('hdChart').getContext('2d');
+            const ctx = document.getElementById('ultraClearChart').getContext('2d');
             
             Chart.defaults.font.family = 'Inter';
             Chart.defaults.font.weight = '900';
+            Chart.defaults.color = '#000000'; // جعل الخطوط والأرقام سوداء تماماً
             
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Hydraulic Cylinders', 'Main Door Seals', 'Clamp Cylinders', 'Combustion Blowers', 'Torsion Bar Assembly', 'Main Door Refractory'],
+                    labels: ['HYDRAULIC', 'DOOR SEALS', 'CLAMPS', 'BLOWERS', 'TORSION BAR', 'REFRACTORY'],
                     datasets: [{
-                        label: 'Operational Days (MTBM)',
+                        label: 'Operational Days',
                         data: [30, 45, 90, 120, 180, 400],
-                        backgroundColor: [
-                            '#dc2626', // Red
-                            '#ef4444', // Lighter Red
-                            '#f59e0b', // Amber
-                            '#3b82f6', // Blue
-                            '#10b981', // Emerald
-                            '#475569'  // Slate
-                        ],
-                        borderRadius: 35,
-                        borderSkipped: false,
-                        barThickness: 95,
-                        hoverBackgroundColor: '#000'
+                        backgroundColor: ['#dc2626', '#ef4444', '#f59e0b', '#3b82f6', '#10b981', '#1e293b'],
+                        borderRadius: 15,
+                        barThickness: 110, // أعمدة ضخمة
+                        borderWidth: 5,
+                        borderColor: '#000000' // تحديد الأعمدة بالأسود لزيادة الوضوح
                     }]
                 },
                 options: {
@@ -241,25 +175,39 @@
                     plugins: { 
                         legend: { display: false },
                         tooltip: {
-                            backgroundColor: '#0f172a',
-                            titleFont: { size: 28, weight: 'black' },
-                            bodyFont: { size: 22 },
-                            padding: 35,
-                            cornerRadius: 30,
-                            displayColors: false,
-                            bodyAlign: 'center',
-                            titleAlign: 'center'
+                            backgroundColor: '#000000',
+                            titleFont: { size: 35, weight: '900' },
+                            bodyFont: { size: 30 },
+                            padding: 40,
+                            displayColors: false
                         }
                     },
                     scales: {
                         y: { 
                             beginAtZero: true, 
-                            grid: { color: '#f1f5f9', drawBorder: false, lineWidth: 5 },
-                            ticks: { font: { size: 20 }, color: '#64748b', padding: 20 }
+                            grid: { 
+                                color: '#64748b', // خطوط شبكة داكنة جداً
+                                lineWidth: 4,     // خطوط شبكة سميكة
+                                drawBorder: true,
+                                borderColor: '#000000',
+                                borderWidth: 8
+                            },
+                            ticks: { 
+                                font: { size: 32, weight: '900' }, // أرقام ضخمة سوداء
+                                color: '#000000',
+                                padding: 25
+                            }
                         },
                         x: { 
                             grid: { display: false },
-                            ticks: { font: { size: 15 }, color: '#1e293b', padding: 40 }
+                            ticks: { 
+                                font: { size: 20, weight: '900' }, // أسماء كبيرة سوداء
+                                color: '#000000',
+                                padding: 40,
+                                autoSkip: false,
+                                maxRotation: 0,
+                                minRotation: 0
+                            }
                         }
                     }
                 }
